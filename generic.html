@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CRS</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <style>
+        @charset "utf-8";
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+        .line-title {
+            position: relative;
+            width: 400px;
+        }
+
+        .line-title::before,
+        .line-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .line-title::before {
+            width: 100%;
+            background: #f2f2f2;
+        }
+
+        .line-title::after {
+            width: 32px;
+            background: 8593ae;
+        }
+
+        :root {
+            --light: #ffffff;
+            --dark: #66a5ad;
+        }
+        
+        .containe {
+          overflow: clip;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem 5rem;
+          width: 100%;
+          height: 50%;
+        }
+        
+        .category_containe {
+          --gap: 0.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: nowrap;
+          gap: calc(var(--gap) * 2);
+          width: 100%;
+          height: 100%;
+        }
+        
+        .conten {
+          --active: 0;
+          cursor: pointer;
+          overflow: clip;
+          position: relative;
+          z-index: 10;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          gap: 1.5rem;
+          padding: 2.5rem;
+          width: 99%;
+          height: 100%;
+          border-radius: 1rem;
+          transition: width 0.5s ease-in-out;
+        }
+        
+        .conten:hover {
+          --active: 1;
+          width: calc(70% - var(--gap));
+        }
+        
+        .conten::before {
+          content: "";
+          position: absolute;
+          z-index: -10;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: var(--dark);
+          opacity: 0.6;
+        }
+        
+        .conten img {
+          position: absolute;
+          z-index: -20;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        
+        .conten .profile_image {
+          opacity: calc(1 - var(--active));
+          transition: opacity 0.3s ease-in-out;
+        }
+        
+        .profile_detail {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          width: 12rem;
+          transition: transform 0.5s cubic-bezier(0.23, 0.93, 0.77, 1) 0.01s;
+          text-align: left; /* Выравнивание текста по левому краю */
+        }
+        
+        .profile_detail span {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: var(--light);
+          text-wrap: nowrap;
+        }
+        
+        .profile_detail p {
+          font-size: 0.75rem;
+          font-weight: 500;
+          color: var(--light);
+        }
+        
+        .profile_quote {
+          transform: translate(0, calc((1 - var(--active)) * (100% + 2.5rem)));
+          text-align: left; /* Выравнивание текста по левому краю */
+        }
+        
+        .profile_quote p {
+          color: var(--light);
+          transform: translate(0, calc((1 - var(--active)) * (100% + 2.5rem)));
+          transition: transform 0.5s cubic-bezier(0.23, 0.93, 0.77, 1) 0.1s;
+        }
+        
+        .wrapper {
+          display: grid;
+          grid-template-rows: 0fr;
+          overflow: hidden;
+          transition: grid-template-rows 0.5s cubic-bezier(0.23, 0.93, 0.77, 1) 0.01s;
+        }
+        
+        .profile_quote {
+          min-height: 0;
+          transform: translateY(50%);
+          opacity: 0;
+          transition: opacity 0.8s ease-in-out, transform 0.8s cubic-bezier(0.23, 0.93, 0.77, 1) 0.01s;
+        }
+        
+        .conten:hover .wrapper {
+          grid-template-rows: 1fr;
+        }
+        
+        .conten:hover .profile_quote {
+          transform: none;
+          opacity: 1;
+        }
+
+        .acc h4, .acc p{
+          color: #ffffff;
+        }
+
+        .acc {
+            margin: 0 auto;
+            max-width: 90%; 
+            width: 100%;
+        }
+
+        strong { 
+            font-weight: bold;
+            }
+
+        h1 {
+            font-size: 3rem;
+            margin: 1rem;
+            font-weight: bold;
+            text-align: center; 
+        }
+
+        .grid {
+            display: flex;
+            justify-content: space-between; 
+            flex-wrap: nowrap; 
+            overflow-y: hidden;
+            overflow-x: auto; 
+            width: 100%;
+            height: 325px;
+            gap: 1rem;
+        }
+
+        figure {
+            flex: 0 0 auto; 
+            width: 300px; 
+            position: relative;
+            margin: 0;
+        }
+
+        figcaption {
+            background: rgba(102, 165, 173, 0.7);
+            bottom: 0;
+            box-sizing: border-box;
+            position: absolute;
+            width: 100%;
+            height: 300px;
+            padding: 1rem;
+            -webkit-transition: max-height 0.1s ease-out;
+            overflow: hidden;
+            color: #ffffff;
+        }
+        
+        p {
+            margin-top: 0.5rem;
+        }
+
+        img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        @media screen and (min-width: 701px) {
+            figure {
+                figcaption { height: 68px; }
+            
+                &:hover {
+                    figcaption {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        height: 100%;
+                        transition: height .5s ease-in;
+                    }
+                    
+                    p {
+                        opacity: 1;
+                        -webkit-transition: opacity .5s ease-in .6s;
+                        -moz-transition: opacity .5s ease-in .6s;
+                        -ms-transition: opacity .5s ease-in .6s;
+                        transition: opacity .5s ease-in .6s;
+                    }
+                }
+            }
+            
+            .grid p { opacity: 0; }
+        }
+
+        @media screen and (max-width: 700px) {
+            figure {
+                width: 80vw; 
+            }
+            
+            p { opacity: 1; }
+            figcaption { height: auto; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div>
+            <a class="logo" href="index.html">CRS</a>
+            <a data-lang="kz">KZ</a> | 
+            <a data-lang="ru">RU</a> | 
+            <a data-lang="en">ENG</a>
+        </div>
+        <div class="con">
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a class="menu-caret" href="index.html" data-translate="menu-home">Главная▾</a>
+                        <ul>
+                            <li><a href="index.html#a" data-translate="menu-services">Услуги</a></li>
+                            <li><a href="index.html#b" data-translate="menu-drones">БПЛА</a></li>
+                            <li><a href="index.html#cta" data-translate="menu-about">О компании</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="log" href="generic.html" data-translate="menu-news">Новости</a></li>
+                    <li><a class="log" href="gen.html" data-translate="menu-safety">ОТ | ТБ | ООС</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- quick fix to load assets from github --> 
+    <section class="containe"> 
+        <div class="category_containe" style="flex-direction: column;"> 
+            <div class="conten"> 
+                <img src="https://sputnik.kz/img/07e7/06/01/35502199_0:0:1266:720_1920x0_80_0_0_d7cd196359cc52c44f7ef61e6dfdd703.jpg" class="profession_image" alt="Profession" /> 
+                <img src="https://sputnik.kz/img/07e7/06/01/35502150_214:0:1067:853_1920x0_80_0_0_b7e783886dd738fecc81a00b0135887a.jpg" class="profile_image" alt="Profile" /> 
+                <div class="profile_detail"> 
+                    <span data-translate="news-title-1">Успешные испытания дрона "Шагала-М"</span> 
+                </div> 
+                <div class="wrapper"> 
+                    <div class="profile_quote"> 
+                        <p data-translate="news-desc-1">Казахстан завершил тестирование модернизированного дрона "Шагала-М", разработанного компанией "Казахстан Инжиниринг". 
+                           БПЛА предназначен для мониторинга инфраструктуры, такой как нефте- и газопроводы, линии электропередач, и может использоваться для спасательных операций. 
+                           Дрон способен пролетать до 200 км и находиться в воздухе до 4 часов, что делает его экономичной альтернативой зарубежным моделям.</p> 
+                    </div> 
+                </div> 
+            </div>
+
+            <div class="conten">
+                <img src="https://controleng.ru/wp-content/uploads/18_92_03-600x285.jpg" class="profession_image" alt="Profession" />
+                <img src="https://alb.aero/wp-content/uploads/2019/06/%D0%B4%D1%80%D0%BE%D0%BD%D1%8B-%D0%BD%D0%B5%D1%84%D1%82%D1%8C-3-500x375.jpg" class="profile_image" alt="Profile" />
+                <div class="profile_detail">
+                    <span data-translate="news-title-2">Расширение применения беспилотников в нефтегазовом секторе и МЧС </span>
+                </div>
+                <div class="wrapper">
+                    <div class="profile_quote">
+                        <p data-translate="news-desc-2">Беспилотники (БПЛА) находят все более широкое применение в нефтегазовом секторе и службах МЧС Казахстана благодаря своей способности повышать безопасность и экономическую эффективность операций. 
+                         В нефтегазовой отрасли дроны используются для мониторинга состояния оборудования, выявления утечек и экологического воздействия, что позволяет значительно сократить затраты на инспекции и повысить скорость реагирования на аварии.  
+                         В службах экстренного реагирования БПЛА помогают в обследовании территорий после стихийных бедствий, контроле за пожарами и планировании спасательных операций, что улучшает общую эффективность работы в условиях кризиса.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conten">
+                <img src="https://voennoedelo.com/uploads/images/2022/09/07/Snimok_ekrana_2022-09-07_v_16.27.37_kopia.jpg" class="profession_image" alt="Profession" />
+                <img src="https://turkic.world/media/2022/09/07/pilotsuz_aparat_leyla_070922_1.jpg" class="profile_image" alt="Profile" />
+                <div class="profile_detail">
+                    <span data-translate="news-title-3">БПЛА «Лейла»: Казахстанский дрон нового поколения для гражданских нужд</span>
+                </div>
+                <div class="wrapper">
+                    <div class="profile_quote">
+                        <p data-translate="news-desc-3">Беспилотный летательный аппарат «Лейла» был разработан в Казахстане для гражданского применения, включая сельское хозяйство и нефтегазовую промышленность. 
+                         Он может также использоваться для мониторинга, поисковых и спасательных операций, имеет максимальную скорость 160 км/ч, высоту полета до 3500 м и продолжительность до 5 часов. 
+                         С полезной нагрузкой до 20 кг, «Лейла» является полностью отечественной разработкой, стоимость которой составляет около 100 миллионов тенге.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="acc">
+        <div class="grid">
+            <figure>
+                <img src="https://status-nv.ru/thumb/2/okXkjmpbDn0dE70WD5tEHA/r/d/operator-bpla.png" alt=""/>
+                <figcaption>
+                  <h4 data-translate="additional-news-1">Подготовка кадров для БПЛА</h4>
+                  <p data-translate="additional-desc-1">В Казахстане началась программа обучения пилотов и механиков БПЛА для гражданских нужд. 
+                   Это инициатива компании "Казахстан Инжиниринг", направленная на повышение уровня безопасности и эффективности использования дронов.</p>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.intechnde.com/wp-content/uploads/2023/09/Elios-2-1-600x450.png" alt="" />
+                <figcaption>
+                    <h4 data-translate="additional-news-2">Мониторинг трубопроводов</h4>
+                    <p data-translate="additional-desc-2">Дроны обеспечивают эффективный контроль за состоянием трубопроводов, что критично для предотвращения аварийных ситуаций.  
+                    Беспилотники могут выявлять места повреждений и утечек, что позволяет быстро реагировать на возникающие проблемы.</p>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://static.tildacdn.com/tild3933-3837-4431-b530-373266386431/photo.jpg" alt="" />
+                <figcaption>
+                    <h4 data-translate="additional-news-3">Развитие инфраструктуры и сертификации</h4>
+                    <p data-translate="additional-desc-3">Казахстан активно работает над созданием системы сертификации БПЛА, что необходимо для полного развертывания производства и продажи гражданских дронов. 
+                     Вопросы сертификации касаются международных стандартов и требований к безопасности.</p>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.dronerush.com/wp-content/uploads/2020/05/DJI-Matrice-300-RTK-commercial-drone-flight.jpg" alt="" />
+                <figcaption>
+                    <h4 data-translate="additional-news-4">Увеличенное время полета и дальность полета</h4>
+                    <p data-translate="additional-desc-4">Matrice 300 RTK может похвастаться максимальным временем полета 55 минут без полезной нагрузки. 
+                     В практических испытаниях пользователи сообщили о среднем времени около 32-34 минут с полезной нагрузкой H20.</p>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="https://www-cdn.djiits.com/cms/uploads/07cbb9145956a317b80d5242868350d3@374*374.png" alt="" />
+                <figcaption>
+                    <h4 data-translate="additional-news-5">Запись видео 8K</h4>
+                    <p data-translate="additional-desc-5">Новые системы камер DJI поддерживают разрешение видео 8K, что обеспечивает исключительную четкость и детализацию для видеооператоров. 
+                     Улучшения в работе при слабом освещении и стабилизации также повышают качество материала.</p>
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+     
+    <footer id="footer">
+        <div class="inner">
+            <div class="content">
+                <section>
+                    <h3 data-translate="company-address">Адрес компании</h3>
+                    <p data-translate="address">Республика Казахстан, город Атырау, 060011, проезд Қамешев Ибат, строение 2</p>
+                </section>
+                <section>
+                    <h4 data-translate="contacts">Контакты</h4>
+                    <ul class="alt">
+                        <li><a href="#">+7 (7122) 506010</a></li>
+                        <li><a href="#">+7 (7122) 506120</a></li>
+                        <li><a href="#">+7 (7122) 506141</a></li>
+                        <li><a href="#">+7 (7122) 506190</a></li>
+                        <li><a href="#">admin@crs.kz</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h4 data-translate="social-links">Социальные сети</h4>
+                    <ul class="plain">
+                        <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                        <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+                        <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        Design by <a>CRS</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+const translations = {
+    'ru': {
+    // Меню
+    'menu-home': 'Главная▾',
+    'menu-services': 'Услуги',
+    'menu-drones': 'БПЛА',
+    'menu-about': 'О компании',
+    'menu-news': 'Новости',
+    'menu-safety': 'ОТ | ТБ | ООС',
+
+    // Новости
+    'news-title-1': 'Успешные испытания дрона "Шагала-М"',
+    'news-desc-1': 'Казахстан завершил тестирование модернизированного дрона "Шагала-М", разработанного компанией "Казахстан Инжиниринг". БПЛА предназначен для мониторинга инфраструктуры, такой как нефте- и газопроводы, линии электропередач, и может использоваться для спасательных операций. Дрон способен пролетать до 200 км и находиться в воздухе до 4 часов, что делает его экономичной альтернативой зарубежным моделям.',
+
+    'news-title-2': 'Расширение применения беспилотников в нефтегазовом секторе и МЧС',
+    'news-desc-2': 'Беспилотники (БПЛА) находят все более широкое применение в нефтегазовом секторе и службах МЧС Казахстана благодаря своей способности повышать безопасность и экономическую эффективность операций. В нефтегазовой отрасли дроны используются для мониторинга состояния оборудования, выявления утечек и экологического воздействия, что позволяет значительно сократить затраты на инспекции и повысить скорость реагирования на аварии. В службах экстренного реагирования БПЛА помогают в обследовании территорий после стихийных бедствий, контроле за пожарами и планировании спасательных операций, что улучшает общую эффективность работы в условиях кризиса.',
+
+    'news-title-3': 'БПЛА «Лейла»: Казахстанский дрон нового поколения для гражданских нужд',
+    'news-desc-3': 'Беспилотный летательный аппарат «Лейла» был разработан в Казахстане для гражданского применения, включая сельское хозяйство и нефтегазовую промышленность. Он может также использоваться для мониторинга, поисковых и спасательных операций, имеет максимальную скорость 160 км/ч, высоту полета до 3500 м и продолжительность до 5 часов. С полезной нагрузкой до 20 кг, «Лейла» является полностью отечественной разработкой, стоимость которой составляет около 100 миллионов тенге.',
+
+    // Дополнительные новости
+    'additional-news-1': 'Подготовка кадров для БПЛА',
+    'additional-desc-1': 'В Казахстане началась программа обучения пилотов и механиков БПЛА для гражданских нужд. Это инициатива компании "Казахстан Инжиниринг", направленная на повышение уровня безопасности и эффективности использования дронов.',
+
+    'additional-news-2': 'Мониторинг трубопроводов',
+    'additional-desc-2': 'Дроны обеспечивают эффективный контроль за состоянием трубопроводов, что критично для предотвращения аварийных ситуаций. Беспилотники могут выявлять места повреждений и утечек, что позволяет быстро реагировать на возникающие проблемы.',
+
+    'additional-news-3': 'Развитие инфраструктуры и сертификации',
+    'additional-desc-3': 'Казахстан активно работает над созданием системы сертификации БПЛА, что необходимо для полного развертывания производства и продажи гражданских дронов. Вопросы сертификации касаются международных стандартов и требований к безопасности.',
+
+    'additional-news-4': 'Увеличенное время полета и дальность полета',
+    'additional-desc-4': 'Matrice 300 RTK может похвастаться максимальным временем полета 55 минут без полезной нагрузки. В практических испытаниях пользователи сообщили о среднем времени около 32-34 минут с полезной нагрузкой H20.',
+
+    'additional-news-5': 'Запись видео 8K',
+    'additional-desc-5': 'Новые системы камер DJI поддерживают разрешение видео 8K, что обеспечивает исключительную четкость и детализацию для видеооператоров. Улучшения в работе при слабом освещении и стабилизации также повышают качество материала.',
+    'company-address': 'Адрес компании',
+    'address': 'Республика Казахстан, город Атырау, 060011, проезд Қамешев Ибат, строение 2',
+    'contacts': 'Контакты',
+    'social-links': 'Социальные сети',
+},
+    'en': { 
+    // Menu
+    'menu-home': 'Home▾',
+    'menu-services': 'Services',
+    'menu-drones': 'UAV',
+    'menu-about': 'About',
+    'menu-news': 'News',
+    'menu-safety': 'LS | IS | EP',
+
+    // News
+    'news-title-1': 'Successful Test of the “Shagala-M” Drone',
+    'news-desc-1': 'Kazakhstan has completed testing of the upgraded “Shagala-M” drone, developed by Kazakhstan Engineering. This UAV is intended for monitoring infrastructure, such as oil and gas pipelines and power lines, and can be used for rescue operations. The drone can fly up to 200 km and stay in the air for up to 4 hours, making it a cost-effective alternative to foreign models.',
+
+    'news-title-2': 'Expanding Drone Applications in the Oil & Gas Sector and Emergency Services',
+    'news-desc-2': 'Drones (UAVs) are increasingly used in Kazakhstan’s oil and gas sector and emergency services due to their ability to improve safety and cost-efficiency. In the oil and gas industry, drones are used to monitor equipment conditions, detect leaks, and assess environmental impact, significantly reducing inspection costs and improving response times. In emergency response services, UAVs help survey areas after natural disasters, monitor fires, and assist in rescue planning, enhancing overall crisis response effectiveness.',
+
+    'news-title-3': '“Leila” UAV: Next-Generation Kazakh Drone for Civilian Needs',
+    'news-desc-3': 'The “Leila” UAV was developed in Kazakhstan for civilian applications, including agriculture and the oil and gas industry. It can also be used for monitoring, search, and rescue operations, with a top speed of 160 km/h, flight altitude of up to 3,500 m, and flight time of up to 5 hours. With a payload capacity of up to 20 kg, “Leila” is a fully domestically-developed solution, costing around 100 million tenge.',
+
+    // Additional News
+    'additional-news-1': 'Training Personnel for UAVs',
+    'additional-desc-1': 'Kazakhstan has launched a training program for UAV pilots and mechanics for civilian purposes. This initiative by Kazakhstan Engineering aims to improve the safety and efficiency of drone use.',
+
+    'additional-news-2': 'Pipeline Monitoring',
+    'additional-desc-2': 'Drones provide efficient monitoring of pipeline conditions, which is critical for preventing accidents. UAVs can identify damage and leaks, allowing for quick responses to emerging issues.',
+
+    'additional-news-3': 'Infrastructure and Certification Development',
+    'additional-desc-3': 'Kazakhstan is actively working on creating a UAV certification system, necessary for the full-scale production and sale of civilian drones. Certification issues relate to international standards and safety requirements.',
+
+    'additional-news-4': 'Increased Flight Time and Range',
+    'additional-desc-4': 'The Matrice 300 RTK boasts a maximum flight time of 55 minutes without a payload. In practical tests, users reported an average of about 32-34 minutes of flight time with the H20 payload.',
+
+    'additional-news-5': '8K Video Recording',
+    'additional-desc-5': 'New DJI camera systems support 8K video resolution, providing exceptional clarity and detail for videographers. Improvements in low-light performance and stabilization also enhance the quality of the footage.',
+
+    // Footer
+    'company-address': 'Company Address',
+    'address': 'Republic of Kazakhstan, Atyrau city, 060011, Kameshev Ibat Passage, Building 2',
+    'contacts': 'Contacts',
+    'social-links': 'Social Media',
+},
+
+'kz': { 
+    // Мәзір
+    'menu-home': 'Басты бет▾',
+    'menu-services': 'Қызметтер',
+    'menu-drones': 'ҰҚҚ',
+    'menu-about': 'Компания туралы',
+    'menu-news': 'Жаңалықтар',
+    'menu-safety': 'ЕҚ | ҚТ | ҚОҚ',
+
+    // Жаңалықтар
+    'news-title-1': '“Шағала-М” дронын сәтті сынақтан өткізу',
+    'news-desc-1': 'Қазақстан “Қазақстан Инжиниринг” компаниясы жасаған жетілдірілген “Шағала-М” дронының сынақтарын аяқтады. ҰҰА инфрақұрылымды бақылауға арналған, мысалы, мұнай және газ құбырлары, электр желілері және құтқару операцияларында пайдаланылуы мүмкін. Дрон 200 км-ге дейін ұшып, ауада 4 сағатқа дейін тұра алады, бұл оны шетелдік модельдерге экономикалық балама етеді.',
+
+    'news-title-2': 'Мұнай-газ секторында және ТЖМ-де ұшқышсыз ұшу аппараттарын қолдануды кеңейту',
+    'news-desc-2': 'ҰҰА Қазақстанның мұнай-газ секторы мен ТЖМ-де қауіпсіздік пен шығындарды азайтуға көмектесетіндіктен кеңінен қолданыла бастады. Мұнай-газ саласында дрондар жабдықтың жай-күйін бақылау, ағып кетуді анықтау және қоршаған ортаға әсерін бағалау үшін пайдаланылады, бұл тексеру шығындарын айтарлықтай азайтады және төтенше жағдайларға әрекет ету жылдамдығын арттырады. Төтенше жағдай қызметінде ҰҰА табиғи апаттардан кейінгі аумақты тексеруге, өрттерді бақылауға және құтқару операцияларын жоспарлауға көмектеседі, осылайша дағдарыс жағдайында жұмыстың тиімділігін арттырады.',
+
+    'news-title-3': '“Лейла” ҰҰА: Қазақстанда жасалған жаңа буын дроны',
+    'news-desc-3': '“Лейла” ҰҰА Қазақстанда ауыл шаруашылығы мен мұнай-газ өнеркәсібін қоса алғанда, азаматтық мақсаттарда қолдану үшін жасалды. Оны бақылау, іздеу және құтқару операцияларында да қолдануға болады, ең жоғары жылдамдығы 160 км/сағ, ұшу биіктігі 3500 м дейін және ұшу уақыты 5 сағатқа дейін. Жүк көтергіштігі 20 кг-ға дейін “Лейла” толығымен отандық өнім, құны шамамен 100 миллион теңге.',
+
+    // Қосымша жаңалықтар
+    'additional-news-1': 'ҰҰА мамандарын дайындау',
+    'additional-desc-1': 'Қазақстанда азаматтық мақсаттарға арналған ҰҰА ұшқыштары мен механиктерін оқыту бағдарламасы басталды. Бұл “Қазақстан Инжиниринг” компаниясының бастамасы дрондарды қолданудың қауіпсіздігі мен тиімділігін арттыруға бағытталған.',
+
+    'additional-news-2': 'Құбырларды бақылау',
+    'additional-desc-2': 'Дрондар құбырлардың жағдайын тиімді бақылауды қамтамасыз етеді, бұл апат жағдайларын болдырмау үшін өте маңызды. ҰҰА зақымдану және ағып кету орындарын анықтап, мәселелерге жедел әрекет етуге мүмкіндік береді.',
+
+    'additional-news-3': 'Инфрақұрылым және сертификаттау дамыту',
+    'additional-desc-3': 'Қазақстан азаматтық дрондарды толық масштабта өндіру мен сатуға қажетті ҰҰА сертификаттау жүйесін құру бағытында белсенді жұмыс істеуде. Сертификаттау мәселелері халықаралық стандарттар мен қауіпсіздік талаптарына қатысты.',
+
+    'additional-news-4': 'Ұшу уақыты мен қашықтықты арттыру',
+    'additional-desc-4': 'Matrice 300 RTK жүктемесіз максималды 55 минуттық ұшу уақытымен мақтана алады. Практикалық сынақтарда пайдаланушылар H20 жүктемесімен шамамен 32-34 минуттық орташа уақытты хабарлады.',
+
+    'additional-news-5': '8K видео жазу',
+    'additional-desc-5': 'DJI жаңа камера жүйелері 8K ажыратымдылығын қолдайды, бұл видеооператорларға ерекше анықтық пен егжей-тегжейлілік береді. Төмен жарық жағдайында жұмыс істеу мен тұрақтандыруды жақсарту материал сапасын арттырады.',
+
+    // Төменгі деректеме
+    'company-address': 'Компания мекен-жайы',
+    'address': 'Қазақстан Республикасы, Атырау қаласы, 060011, Қамешев Ибат көшесі, ғимарат 2',
+    'contacts': 'Байланыс',
+    'social-links': 'Әлеуметтік желілер',
+  }
+};
+
+function changeLanguage(lang) {
+    // Перевод элементов с атрибутом data-translate
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+
+    // Сохранение выбранного языка в localStorage
+    localStorage.setItem('selectedLanguage', lang);
+
+    // Обновление стилей кнопок языка
+    updateLanguageButtonStyles(lang);
+}
+
+function updateLanguageButtonStyles(selectedLang) {
+    document.querySelectorAll('[data-lang]').forEach(button => {
+        if (button.getAttribute('data-lang') === selectedLang) {
+            button.classList.add('active-lang');
+        } else {
+            button.classList.remove('active-lang');
+        }
+    });
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    // Добавление обработчиков событий для кнопок переключения языка
+    document.querySelectorAll('[data-lang]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = button.getAttribute('data-lang');
+            changeLanguage(lang);
+        });
+    });
+
+    // Загрузка сохраненного языка
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        changeLanguage(savedLanguage);
+    }
+});
+</script>
+</body>
+</html>

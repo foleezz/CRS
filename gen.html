@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>CRS</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <style>
+        .section {
+            display: flex;
+            flex-direction: column; /* Stack containers vertically */
+            align-items: center; /* Center containers horizontally */
+        }
+        
+        .rounded-container {
+            background-color: var(--background-color, rgba(102, 165, 173, 0.6));
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%; /* Set width to make it responsive */
+            margin: 10px 0; /* Maintain vertical spacing */
+        }
+
+        .rounded-container h2, .rounded-container p {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div>
+            <a class="logo" href="index.html">CRS</a>
+            <a data-lang="kz">KZ</a> | 
+            <a data-lang="ru">RU</a> | 
+            <a data-lang="en">ENG</a>
+        </div>
+        <div class="con">
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a class="menu-caret" href="index.html" data-translate="menu-home">Главная▾</a>
+                        <ul>
+                            <li><a href="index.html#a" data-translate="menu-services">Услуги</a></li>
+                            <li><a href="index.html#b" data-translate="menu-drones">БПЛА</a></li>
+                            <li><a href="index.html#cta" data-translate="menu-about">О компании</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="log" href="generic.html" data-translate="menu-news">Новости</a></li>
+                    <li><a class="log" href="gen.html" data-translate="menu-safety">ОТ | ТБ | ООС</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div class="rounded-container">
+            <h2 data-translate="labor-protection">Охрана труда</h2>
+            <p data-translate="labor-protection-desc">Это пример контейнера с округленными краями и тенями для стилизации.</p>
+        </div>
+         
+        <div class="rounded-container">
+            <h2 data-translate="safety-measures">Техника безопасности</h2>
+            <p data-translate="safety-measures-desc">Это пример контейнера с округленными краями и тенями для стилизации.</p>
+        </div>
+         
+        <div class="rounded-container">
+            <h2 data-translate="environmental-protection">Охрана окружающей среды</h2>
+            <p data-translate="environmental-protection-desc">Это пример контейнера с округленными краями и тенями для стилизации.</p>
+        </div>
+    </section>
+     
+    <footer id="footer">
+        <div class="inner">
+            <div class="content">
+                <section>
+                    <h3 data-translate="company-address">Адрес компании</h3>
+                    <p data-translate="address">Республика Казахстан, город Атырау, 060011, проезд Қамешев Ибат, строение 2</p>
+                </section>
+                <section>
+                    <h4 data-translate="contacts">Контакты</h4>
+                    <ul class="alt">
+                        <li><a href="#">+7 (7122) 506010</a></li>
+                        <li><a href="#">+7 (7122) 506120</a></li>
+                        <li><a href="#">+7 (7122) 506141</a></li>
+                        <li><a href="#">+7 (7122) 506190</a></li>
+                        <li><a href="#">admin@crs.kz</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h4 data-translate="social-links">Социальные сети</h4>
+                    <ul class="plain">
+                        <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                        <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+                        <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </footer>
+    <div class="copyright">
+        Design by <a>CRS</a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        const translations = {
+            ru: {
+                'menu-home': 'Главная▾',
+                'menu-services': 'Услуги',
+                'menu-drones': 'БПЛА',
+                'menu-about': 'О компании',
+                'menu-news': 'Новости',
+                'menu-safety': 'ОТ | ТБ | ООС',
+                'labor-protection': 'Охрана труда',
+                'labor-protection-desc': 'Это пример контейнера с округленными краями и тенями для стилизации.',
+                'safety-measures': 'Техника безопасности',
+                'safety-measures-desc': 'Это пример контейнера с округленными краями и тенями для стилизации.',
+                'environmental-protection': 'Охрана окружающей среды',
+                'environmental-protection-desc': 'Это пример контейнера с округленными краями и тенями для стилизации.',
+                'company-address': 'Адрес компании',
+                'address': 'Республика Казахстан, город Атырау, 060011, проезд Қамешев Ибат, строение 2',
+                'contacts': 'Контакты',
+                'social-links': 'Социальные сети',
+                // Добавьте другие переводы
+            },
+            kz: {
+                'menu-home': 'Басты бет▾',
+                'menu-services': 'Қызметтер',
+                'menu-drones': 'ҰҚҚ',
+                'menu-about': 'Компания туралы',
+                'menu-news': 'Жаңалықтар',
+                'menu-safety': 'ЕҚ | ҚТ | ҚОҚ',
+                'labor-protection': 'Еңбекті қорғау',
+                'labor-protection-desc': 'Бұл дөңгелектенген жиектері мен көлеңкелері бар контейнердің мысалы.',
+                'safety-measures': 'Қауіпсіздік техникасы',
+                'safety-measures-desc': 'Бұл дөңгелектенген жиектері мен көлеңкелері бар контейнердің мысалы.',
+                'environmental-protection': 'Қоршаған ортаны қорғау',
+                'environmental-protection-desc': 'Бұл дөңгелектенген жиектері мен көлеңкелері бар контейнердің мысалы.',
+                'company-address': 'Компания мекен-жайы',
+                'address': 'Қазақстан Республикасы, Атырау қаласы, 060011, Қамешев Ибат көшесі, ғимарат 2',
+                'contacts': 'Байланыс',
+                'social-links': 'Әлеуметтік желілер',
+                // Добавьте другие переводы
+            },
+            en: {
+                'menu-home': 'Home▾',
+                'menu-services': 'Services',
+                'menu-drones': 'UAV',
+                'menu-about': 'About',
+                'menu-news': 'News',
+                'menu-safety': 'LS | IS | EP',
+                'labor-protection': 'Labor Protection',
+                'labor-protection -desc': 'This is an example of a container with rounded edges and shadows for styling.',
+                'safety-measures': 'Safety Measures',
+                'safety-measures-desc': 'This is an example of a container with rounded edges and shadows for styling.',
+                'environmental-protection': 'Environmental Protection',
+                'environmental-protection-desc': 'This is an example of a container with rounded edges and shadows for styling.',
+                'company-address': 'Company Address',
+                'address': 'Republic of Kazakhstan, Atyrau city, 060011, Kameshev Ibat Passage, Building 2',
+                'contacts': 'Contacts',
+                'social-links': 'Social Media',
+                // Добавьте другие переводы
+            }
+        };
+
+        function changeLanguage(lang) {
+    // Перевод элементов с атрибутом data-translate
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
+        }
+    });
+
+    // Сохранение выбранного языка в localStorage
+    localStorage.setItem('selectedLanguage', lang);
+
+    // Обновление стилей кнопок языка
+    updateLanguageButtonStyles(lang);
+}
+
+function updateLanguageButtonStyles(selectedLang) {
+    document.querySelectorAll('[data-lang]').forEach(button => {
+        if (button.getAttribute('data-lang') === selectedLang) {
+            button.classList.add('active-lang');
+        } else {
+            button.classList.remove('active-lang');
+        }
+    });
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    // Добавление обработчиков событий для кнопок переключения языка
+    document.querySelectorAll('[data-lang]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = button.getAttribute('data-lang');
+            changeLanguage(lang);
+        });
+    });
+
+    // Загрузка сохраненного языка
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        changeLanguage(savedLanguage);
+    }
+});
+    </script>
+</body>
+</html>
