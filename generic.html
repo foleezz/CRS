@@ -304,6 +304,32 @@
                 width: 350px;
                 height: 350px;
             }
+            @media screen and (min-width: 701px) {
+                figure { display: none;
+                    figcaption { height: 68px; }
+                
+                    &:hover {  display: none;
+                        figcaption {
+                            position: absolute;
+                            bottom: 0;
+                            width: 350px;
+                            height: 100%;
+                            transition: height .5s ease-in;
+                        }
+                        
+                        p {  display: none;
+                            opacity: 1;
+                            -webkit-transition: opacity .5s ease-in .6s;
+                            -moz-transition: opacity .5s ease-in .6s;
+                            -ms-transition: opacity .5s ease-in .6s;
+                            transition: opacity .5s ease-in .6s;
+                        }
+                    }
+                }
+                
+                .grid p {  display: none;
+                        opacity: 0; }
+            }
         }
     </style>
 </head>
