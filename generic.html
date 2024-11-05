@@ -176,8 +176,10 @@
           opacity: 1;
         }
 
-        .acc h4, .acc p{
+        .acc h4{
           color: #ffffff;
+          font-size: 0.8rem;
+          font-weight: 600;
         }
 
         .acc {
@@ -215,7 +217,7 @@
             position: absolute;
             width: 100%;
             height: 300px;
-            padding: 1rem;
+            padding: 2rem;
             -webkit-transition: max-height 0.1s ease-out;
             overflow: hidden;
             color: #ffffff;
@@ -296,6 +298,19 @@
               font-size: 0.75rem;
               font-weight: 500;
               color: var(--light);
+            }
+            figcaption {
+                background: rgba(102, 165, 173, 0.7);
+                bottom: 0;
+                box-sizing: border-box;
+                position: absolute;
+                width: 100%;
+                height: 325px;
+                padding: 2rem;
+                overflow: hidden;
+                color: #ffffff;
+            }
+            @media screen and (min-width: 701px) {
             }
         }
     </style>
