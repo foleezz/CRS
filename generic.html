@@ -190,13 +190,6 @@
             font-weight: bold;
             }
 
-        h1 {
-            font-size: 3rem;
-            margin: 1rem;
-            font-weight: bold;
-            text-align: center; 
-        }
-
         .grid {
             display: flex;
             justify-content: space-between; 
@@ -303,6 +296,57 @@
               font-size: 0.75rem;
               font-weight: 500;
               color: var(--light);
+            }
+            .grid {
+                flex-direction: column;
+                height: auto;
+                overflow-y: visible;
+            }
+        
+            figure {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        
+            figcaption {
+                position: relative;
+                height: auto;
+                margin-top: -70px;
+                max-height: 100px;
+                transition: max-height 0.3s ease-out;
+            }
+        
+            figure:hover figcaption {
+                max-height: 500px; /* Увеличьте это значение, если контент не помещается */
+            }
+        
+            .grid p {
+                opacity: 1;
+            }
+            
+            @media screen and (min-width: 701px) {
+                figure {
+                    figcaption { 
+                        height: 68px;
+                        transition: height 0.3s ease-in-out;
+                    }
+            
+                    &:hover {
+                        figcaption {
+                            height: 100%;
+                        }
+                        
+                        p {
+                            opacity: 1;
+                            transition: opacity 0.3s ease-in 0.2s;
+                        }
+                    }
+                }
+                
+                .grid p { 
+                    opacity: 0;
+                    transition: opacity 0.3s ease-out;
+                }
             }
         }
     </style>
