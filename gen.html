@@ -18,6 +18,7 @@
             display: flex;
             flex-direction: column; /* Stack containers vertically */
             align-items: center; /* Center containers horizontally */
+            margin-top: 10px;
         }
         
         .rounded-container {
@@ -49,15 +50,26 @@
                     <li>
                         <a class="menu-caret" href="index.html" data-translate="menu-home">Главная▾</a>
                         <ul>
-                            <li><a href="index.html#a" data-translate="menu-services">Услуги</a></li>
-                            <li><a href="index.html#b" data-translate="menu-drones">БПЛА</a></li>
-                            <li><a href="index.html#cta" data-translate="menu-about">О компании</a></li>
+                            <li><a href="#a" data-translate="menu-services">Услуги</a></li>
+                            <li><a href="#b" data-translate="menu-drones">БПЛА</a></li>
+                            <li><a href="#cta" data-translate="menu-about">О компании</a></li>
                         </ul>
                     </li>
                     <li><a class="log" href="generic.html" data-translate="menu-news">Новости</a></li>
                     <li><a class="log" href="gen.html" data-translate="menu-safety">ОТ | ТБ | ООС</a></li>
                 </ul>
             </div>
+        </div>
+        <div class="hamburger-menu">
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+                <span></span>
+            </label>
+            <ul class="menu__box">
+                <li><a class="menu__item" href="index.html" data-translate="menu-home1">Главная</a></li>
+                <li><a class="menu__item" href="generic.html" data-translate="menu-news">БПЛА</a></li>
+                <li><a class="menu__item" href="gen.html" data-translate="menu-safety">О компании</a></li>
+            </ul>
         </div>
     </header>
     <section class="section">
@@ -119,6 +131,7 @@
         const translations = {
             ru: {
                 'menu-home': 'Главная▾',
+                'menu-home1': 'Главная',
                 'menu-services': 'Услуги',
                 'menu-drones': 'БПЛА',
                 'menu-about': 'О компании',
@@ -138,6 +151,7 @@
             },
             kz: {
                 'menu-home': 'Басты бет▾',
+                'menu-home1': 'Басты бет',
                 'menu-services': 'Қызметтер',
                 'menu-drones': 'ҰҚҚ',
                 'menu-about': 'Компания туралы',
@@ -157,6 +171,7 @@
             },
             en: {
                 'menu-home': 'Home▾',
+                'menu-home1': 'Home',
                 'menu-services': 'Services',
                 'menu-drones': 'UAV',
                 'menu-about': 'About',
