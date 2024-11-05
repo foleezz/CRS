@@ -3752,6 +3752,10 @@ span {
 
 /* Стили для мобильного меню (на экранах меньше 768px) */
 @media only screen and (max-width: 768px) {
+  #header .logo {
+    font-family: Marker Felt, fantasy;
+  }
+  
   #banner {
     -ms-flex-align: center;
     -ms-flex-pack: center;
